@@ -3,7 +3,6 @@ import sys
 import time
 from logging import WARNING, error
 
-from click import style
 from rich.console import Console
 from rich.panel import Panel
 from rich.prompt import Prompt
@@ -13,26 +12,27 @@ import pyfiglet
 
 # ANSI escape codes (colors)
 
-GREEN = "\033[32m"
-MAIN_TEXT = "\033[38;2;117;174;155m"
+GREEN = "\033[38;2;129;236;134m"
+LILAC = "\033[38;2;103;68;156m"
+MAIN_TEXT = "\033[38;2;129;236;134m"
 TITLE_TEXT = "\033[38;2;48;140;135m"
 BACKGROUND = "\033[38;2;14;16;37m"
-WARNING_TEXT = "\033[38;2;191;0;53m"
+WARNING_TEXT = "\033[38;2;175;9;37m"
 RESET = "\033[0m"
 
 TYPING_SPEED = 0.1
 
 # Define a custom cyberpunk color palette
 cyber_theme = Theme({
-    "neon_green": "bold #00ff66",
+    "neon_green": "bold #81ec86",
     "neon_pink": "bold #ff007f",
-    "neon_blue": "bold #00e5ff",
+    "neon_blue": "bold #67fff2",
     "cyber_yellow": "bold #ffe600",
     "dim_gray": "dim white",
     "background": "bold #0e1025",
     "main_text": "bold #75ae9b",
     "title_text": "bold #308C87",
-    "warning_text": "bold #bf0035"
+    "warning_text": "bold #af0925"
 })
 
 valid_selections = ["whatisthenetwork", "cyberindex", "dog", "entries", "help"]
@@ -60,16 +60,16 @@ GLITCH_SEQ = ["█▓▒░░▒▓██▓▒░░░▒▒▓▓███�
 FAKE_ERROR_STACKTRACE = [
     f"{WARNING_TEXT} CRITICAL SYSTEM FAULT: Cyberdeck Kernel Panic (Error Code 0x8004100E){RESET} \n",
     f"{MAIN_TEXT} Traceback (most recent neural link call):{RESET}\n",
-    f"  File {TITLE_TEXT} \"/net/subroutines/security_gate.py\"{RESET} , line 142, in {MAIN_TEXT} verify_clearance{RESET} \n",
+    f"  File {LILAC} \"/net/subroutines/security_gate.py\"{RESET} , line 142, in {MAIN_TEXT} verify_clearance{RESET} \n",
     f"    auth_token = cipher.decrypt(user_input, key=NETWORK_KEY)\n",
-    f"  File {TITLE_TEXT} \"/net/crypto/cipher_suite.py\"{RESET} , line 88, in {MAIN_TEXT} decrypt{RESET} \n",
+    f"  File {LILAC} \"/net/crypto/cipher_suite.py\"{RESET} , line 88, in {MAIN_TEXT} decrypt{RESET} \n",
     f"    raise DecryptionError(\"Payload signature corrupted during transmission\")\n",
     f"{WARNING_TEXT} DecryptionError{RESET} : Payload signature mismatch or missing neural token.\n",
-    f"  File {TITLE_TEXT} \"/kernel/neural_link.py\"{RESET} , line 301, in {MAIN_TEXT} jack_in{RESET} \n",
+    f"  File {LILAC} \"/kernel/neural_link.py\"{RESET} , line 301, in {MAIN_TEXT} jack_in{RESET} \n",
     f"    sys.hardware_bus.pulse(voltage=120, target=\"cortex_implants\")\n",
     f"{WARNING_TEXT} HardwareFault{RESET} : Overvoltage spike detected in optic interface.\n",
     f"{WARNING_TEXT} [!] EMERGENCY DUMP WRITTEN TO /var/log/ice_breach.dmp{RESET} \n",
-    f"{MAIN_TEXT} [SYS_OVERRIDE] Process crashed with {RESET}{WARNING_TEXT}error{RESET}{MAIN_TEXT} code {RESET}{TITLE_TEXT}1{RESET}{MAIN_TEXT} ...{RESET} \n\n"
+    f"{MAIN_TEXT} [SYS_OVERRIDE] Process crashed with {RESET}{WARNING_TEXT}error{RESET}{MAIN_TEXT} code {RESET}{LILAC}1{RESET}{MAIN_TEXT} ...{RESET} \n\n"
 ]
 
 
@@ -115,7 +115,7 @@ def load_animation(loading_time, style="neon_green", delay=0.08):
         sys.stdout.write("\r\033[K")
         sys.stdout.flush()
 
-def boot_animation(text, style="main_text", delay=0.01, newline=True):
+def boot_animation(text, style="neon_green", delay=0.01, newline=True):
     """Simulates a typing terminal effect."""
     for char in text:
         console.print(char, style=style, end="")
@@ -204,18 +204,18 @@ def main():
     time.sleep(5)
     load_animation(3)
 
-    boot_animation("Are you afraid of ", style="main_text", delay=TYPING_SPEED, newline=False)
+    boot_animation("Are you afraid of ", style="neon_green", delay=TYPING_SPEED, newline=False)
     boot_animation("ARTIFICIAL INTELLIGENCE ", style="warning_text", delay=TYPING_SPEED, newline=False)
-    boot_animation("taking over the world?\n", delay=TYPING_SPEED)
+    boot_animation("taking over the world?\n", style="neon_green", delay=TYPING_SPEED)
     ominous_txt = "You have to be"
     time.sleep(1)
     load_animation(2)
-    boot_animation(ominous_txt, newline=False, delay=TYPING_SPEED)
+    boot_animation(ominous_txt, style="neon_green", newline=False, delay=TYPING_SPEED)
     time.sleep(.5)
     erase_text(len(ominous_txt), delay=0.03)
-    boot_animation("You don't have to be", delay=TYPING_SPEED)
+    boot_animation("You don't have to be", style="neon_green", delay=TYPING_SPEED)
     time.sleep(1)
-    boot_animation(":)", delay=TYPING_SPEED * 2)
+    boot_animation(":)", style="neon_green", delay=TYPING_SPEED * 2)
     time.sleep(1)
 
 

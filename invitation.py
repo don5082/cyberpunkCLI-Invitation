@@ -35,7 +35,7 @@ cyber_theme = Theme({
     "warning_text": "bold #af0925"
 })
 
-valid_selections = ["whatisthenetwork", "cyberindex", "dog", "entries", "help"]
+valid_selections = ["whatisthenetwork", "decrypt", "entries", "batty", "help"]
 
 
 console = Console(theme=cyber_theme)
@@ -167,11 +167,11 @@ def main():
 
         if answer.lower().strip() == 'help':
             boot_animation("""Available commands: \n
-          \twhatisthenetwork    - tells you more about what the Network is\n
-          \tcyberindex         - get the cyber crime live status\n
-          \tdog                 - try and find out\n
-          \tentries             - get all article entries\n
-          \thelp                - this command, displays all current commands\n
+                \twhatisthenetwork- tells you what the network is\n
+                \tdecrypt - initialize payload cipher\n
+                \tentries  - access article entries\n
+                \tbatty - try and find out\n
+                \thelp - this command, displays all current commands\n\n
           """, delay=.005)
             selection = input()
             while not selection.lower().strip() in valid_selections:
